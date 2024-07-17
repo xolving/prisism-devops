@@ -1,0 +1,8 @@
+- name: Create AWS AMI with Packer
+  vars_files:
+    - vars/main.yml
+  hosts:
+    - jeff
+  become: yes
+  roles:
+    - nginx

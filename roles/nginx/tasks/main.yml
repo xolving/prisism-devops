@@ -1,0 +1,21 @@
+---
+- name: apt update
+  apt:
+    update_cache: yes
+- name: Add User for Nginx
+  user:
+    name: "{{ username }}"
+    shell: /bin/bash
+    home: /home/{{ username }}
+    createhome: yes
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+- name: Copy Nginx Configuration
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+  notify:
+    - Daemon reload
+    - Restart nginx

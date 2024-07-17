@@ -1,0 +1,3 @@
+*.pem
+**/vars/*
+hosts
